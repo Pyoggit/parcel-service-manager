@@ -41,7 +41,6 @@ public class ParcelMain {
                 System.out.println("\n입력에 오류가 있습니다. 숫자만 입력하세요.\n");
             }
         } // end of line
-
     }
 
     // 회원 정보 메뉴
@@ -69,6 +68,10 @@ public class ParcelMain {
                     System.out.println("");
                     crm.deleteManager();
                     break;
+                case CUSTOMER_CHOICE.SORT:
+                	System.out.println("");
+                	crm.sortManager();
+                	break;
                 case CUSTOMER_CHOICE.MAIN:
                     return;
                 default:
