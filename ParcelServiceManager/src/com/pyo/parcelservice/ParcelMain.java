@@ -32,6 +32,7 @@ public class ParcelMain {
                     case MENU_CHOICE.EXIT:
                         System.out.println("프로그램을 종료합니다.");
                         exitFlag = true;
+                        sc.close();
                         break;
                     default:
                         System.out.println("해당되는 메뉴 번호만 입력하세요.");
