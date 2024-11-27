@@ -17,6 +17,7 @@ public class CustomerDAO {
 	private static final String CUSTOMER_ID_CHECK = "SELECT COUNT(*) AS COUNT  FROM CUSTOMER WHERE ID = ?";
 	private static final String CUSTOMER_UPDATE = "UPDATE CUSTOMER SET NAME = ?, PWD = ?, ADDRESS = ?, PHONE = ?, BIRTH = ?, EMAIL = ? WHERE ID = ?";
 	private static final String CUSTOMER_DELETE = "DELETE FROM CUSTOMER WHERE ID = ?";
+	private static final String CUSTOMER_SORT = "SELECT * FROM CUSTOMER ORDER BY CDATE ASC, TO_NUMBER(CODE) ASC";
 
 	// 회원정보출력
 	public static ArrayList<CustomerVO> customerSelect() {
@@ -160,4 +161,40 @@ public class CustomerDAO {
 		}
 		return successFlag;
 	}
+	
+	// 가입일자와 회원코드 기준으로 정렬된 회원 목록 조회
+	public ArrayList<CustomerVO> customerSortedSelect() {
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    ArrayList<CustomerVO> customerList = new ArrayList<CustomerVO>();
+
+	    try {
+	        con = DBUtility.dbCon();
+	        pstmt = con.prepareStatement(CUSTOMER_SORT);
+	        rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            String code = rs.getString("CODE");
+	            String name = rs.getString("NAME");
+	            String id = rs.getString("ID");
+	            String pwd = rs.getString("PWD");
+	            String birth = rs.getString("BIRTH");
+	            String phone = rs.getString("PHONE");
+	            String address = rs.getString("ADDRESS");
+	            String email = rs.getString("EMAIL");
+	            Date cdate = rs.getDate("CDATE");
+
+	            CustomerVO cust = new CustomerVO(code, name, id, pwd, birth, phone, address, email, cdate);
+	            customerList.add(cust);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DBUtility.dbClose(con, pstmt, rs);
+	    }
+
+	    return customerList;
+	}
+
 }
