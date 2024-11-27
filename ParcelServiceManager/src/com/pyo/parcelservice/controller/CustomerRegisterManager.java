@@ -159,7 +159,6 @@ public class CustomerRegisterManager {
                     cv.getCode(), cv.getName(), cv.getId(), cv.getPhone(), cv.getBirth(), cv.getEmail());
         }
         System.out.println("====================================================================================");
-        sc.close();
     }
     
 }
