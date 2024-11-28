@@ -1,4 +1,4 @@
-package com.pyo.parcelservice.controller;
+package com.pyo.parcelservice.util;
 
 import java.io.FileReader;
 import java.sql.CallableStatement;
