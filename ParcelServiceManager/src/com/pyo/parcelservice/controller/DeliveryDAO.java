@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.pyo.parcelservice.model.DeliveryVO;
+import com.pyo.parcelservice.util.DBUtility;
 
 public class DeliveryDAO {
 

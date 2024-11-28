@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.pyo.parcelservice.model.CustomerVO;
+import com.pyo.parcelservice.util.DBUtility;
 
 public class CustomerDAO {
 
