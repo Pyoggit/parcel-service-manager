@@ -1,9 +1,9 @@
-package com.pyo.parcelservice.controller;
+package com.pyo.parcelservice.util;
 
 import java.sql.Connection;
 
 public class ConnectTest {
-	//데이터베이스 연결 접속 테스트
+	//데이터베이스 DB 연결 접속 테스트
 	public static void main(String[] args) {
 		Connection con = DBUtility.dbCon();
 		if (con != null) {
